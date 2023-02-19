@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+      integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <script>
+    var logs = [];
+    fetch("data/entries.json")
+      .then((response) => response.json())
+      .then((json) => {
+        logs = json; //assign json to logs
+        console.log(logs);
+        createTable();
+      });
+
+    let createTable = () => {
+      console.log("Creating table!");
+      let col = [];
+      for (let i = 0; i < logs.length; i++) {
+        for (let key in logs[i]) {
+          if (col.indexOf(key) === -1) {
+            col.push(key);
+          }
+        }
+      }
+      const table = document.createElement("table");
+      table.className = "table pure-table";
+      let tr = table.insertRow(-1);
+      //Create headers
+      function appendHeader(title) {
+        let th = document.createElement("th");
+        th.innerHTML = title;
+        tr.appendChild(th);
+      }
+      appendHeader("#");
+      appendHeader("Name");
+      appendHeader("Country");
+      appendHeader("Date");
+      appendHeader("Message");
+      //Populate table
+      for (let i = 0; i < logs.length; i++) {
+        tr = table.insertRow(-1);
+
+        for (let j = 0; j < col.length; j++) {
+          let tabCell = tr.insertCell(-1);
+          tabCell.innerHTML = logs[i][col[j]];
+        }
+      }
+      //Add table to page
+      const divWithTable = document.getElementById("table");
+      divWithTable.innerHTML = "";
+      divWithTable.appendChild(table);
+    };
+  </script>
+
+  <body>
+    <section class="banner">
+      <h1 class="banner-title">Leave a note</h1>
+    </section>
+
+    <div id="table"></div>
+  </body>
+</html>

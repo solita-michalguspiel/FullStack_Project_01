@@ -41,3 +41,28 @@
     font-size: 1.2em;
     line-height: 1.5;
   }
+
+  .plant-image{
+    max-width: 100%;
+    height: auto;
+    padding: 10px 0px 10px 0px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+
+  th,
+  td {
+    padding: 0.5rem;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ccc;
+  }
+
+  th {
+    background-color: #9b59b6;
+  }

@@ -8,8 +8,8 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname+'/public/homepage.html'));
 });
 
-app.get("public/guestbook", (req, res) => {
-  res.send("You are in guestbook");
+app.get("/guestbook", (req, res) => {
+  res.sendFile(path.join(__dirname+'/public/guestbook.html'));
 });
 
 app.get("/newmessage", (req, res) => {
