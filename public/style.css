@@ -48,11 +48,21 @@
     padding: 10px 0px 10px 0px;
   }
 
-  table {
+  .table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ccc;
     margin-bottom: 1rem;
+  }
+  .form-label {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .form-input {
+  border: 1px solid #cbd5e0;
+  padding: 0.5rem;
+  width: 60%;
+  border-radius: 0.25rem;
   }
 
   th,
@@ -66,3 +76,5 @@
   th {
     background-color: #9b59b6;
   }
+
+ 
