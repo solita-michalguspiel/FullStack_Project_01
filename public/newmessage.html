@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Guestbook</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+      integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls"
+      crossorigin="anonymous"
+    />
+
+    <script>
+      function validateForm() {
+        var username = document.getElementById("username").value;
+        var country = document.getElementById("country").value;
+        var message = document.getElementById("message").value;
+        if (username === "" || country === "" || message === "") {
+          alert("All fields are required.");
+          return false;
+        }
+        return true;
+      }
+    </script>
+
+  </head>
+  <body>
+    <div class="header text-center">
+      <h1 class="header-title">Guestbook</h1>
+    </div>
+    <div class="container mx-auto py-10">
+      <form class="pure-form pure-form-stacked" action="#" onsubmit="return validateForm()">
+        <div class="flex flex-col mb-5">
+          <label for="username" class="text-lg font-bold">Username:</label>
+          <input type="text" id="username" class="border border-gray-400 p-2 rounded">
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="country" class="text-lg font-bold">Country:</label>
+          <input type="text" id="country" class="border border-gray-400 p-2 rounded">
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="message" class="text-lg font-bold">Message:</label>
+          <textarea id="message" class="border border-gray-400 p-2 rounded"></textarea>
+        </div>
+        <div class="text-center mb-5">
+          <button class="pure-button">Submit</button>
+        </div>
+      </form>
+      <hr class="my-10">
+      <h2 class="text-xl font-bold mb-5 text-center">Previous Entries:</h2>
+      <ul class="list-none">
+        <li class="mb-5">
+          <p class="text-lg font-bold mb-2">John Doe:</p>
+          <p class="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae dui id justo venenatis commodo.</p>
+        </li>
+    
+      </div>
+    </body>
+</html>
