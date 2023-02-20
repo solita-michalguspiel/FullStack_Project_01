@@ -18,7 +18,7 @@ app.get("/newmessage", (req, res) => {
 });
 
 app.get("/ajaxmessage", (req, res) => {
-  res.send("You are in ajax message");
+  res.sendFile(path.join(__dirname + "/public/ajaxmessage.html"));
 });
 
 app.listen(8080, () => {
@@ -31,13 +31,14 @@ app.use(
   })
 );
 
+app.use(bodyParser.json());
+
 app.post("/addpost", (req, res) => {
   let entriesPath = "public/data/entries.json"  
   var data = fs.readFileSync(entriesPath);
   var dataObject = JSON.parse(data);
   let newId = dataObject.length + 1 
-  res.send("POST request to the homepage");
-  console.log(req.body); // your JSON
+  console.log(req.body); 
   let newData = {
     id: newId,
     username: req.body.username,
@@ -46,11 +47,14 @@ app.post("/addpost", (req, res) => {
     message: req.body.message,
   };
   dataObject.push(newData);
-
   var newJson = JSON.stringify(dataObject);
   fs.writeFile(entriesPath, newJson, err => {
-    // error checking
-    if(err) throw err;
-    console.log("New data added");
-}); 
+      // error checking
+      if(err){
+        res.status(500).send("Error writing to file");
+      }else {
+        res.send("Data saved successfully");
+        console.log("New data added");
+      }
+  }); 
 });
